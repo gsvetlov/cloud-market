@@ -2,9 +2,11 @@ CREATE TABLE products
 (
     id BIGSERIAL PRIMARY KEY NOT NULL,
     title VARCHAR(127) NOT NULL,
-    cost DECIMAL(12,2) NOT NULL
+    price DECIMAL(12,2) NOT NULL,
+    created_on TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_on TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
-INSERT INTO products (title, cost) VALUES ('Хлеб', 62.50),
+INSERT INTO products (title, price) VALUES ('Хлеб', 62.50),
                                           ('Молоко', 510.20),
                                           ('Сыр', 314.22),
                                           ('Картофель', 114.57),

@@ -14,7 +14,7 @@ spring:
   application.name: cloud-market.product-service
   datasource:
     driver-class-name: org.h2.Driver
-    url: jdbc:h2:mem:cloudmarket;MODE=PostgreSQL
+    url: jdbc:h2:mem:cloudmarket
     username: sa
     password:
   jpa:
