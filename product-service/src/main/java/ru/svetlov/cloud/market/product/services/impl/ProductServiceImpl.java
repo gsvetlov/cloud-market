@@ -8,6 +8,7 @@ import ru.svetlov.cloud.market.product.entities.Product;
 import ru.svetlov.cloud.market.product.exceptions.ResourceNotFoundException;
 import ru.svetlov.cloud.market.product.services.ProductService;
 import ru.svetlov.cloud.market.product.repositories.ProductRepository;
+import ru.svetlov.cloud.market.services.product.common.dto.PageDto;
 import ru.svetlov.cloud.market.services.product.common.dto.ProductDto;
 
 @Service
@@ -17,20 +18,21 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public ProductDto getById(Long id) {
-        return productRepository.findById(id).map(this::mapToDto).orElseThrow(() -> new ResourceNotFoundException("Product id: " + id + " not found."));
+        return productRepository.findById(id).map(this::productToDto).orElseThrow(() -> new ResourceNotFoundException("Product id: " + id + " not found."));
     }
 
     @Override
     public ProductDto getByTitle(String title) {
-        return productRepository.findByTitle(title).map(this::mapToDto).orElseThrow(() -> new ResourceNotFoundException("Product title: " + title + " not found."));
+        return productRepository.findByTitle(title).map(this::productToDto).orElseThrow(() -> new ResourceNotFoundException("Product title: " + title + " not found."));
     }
 
     @Override
-    public Page<ProductDto> getProductsPage(int page, int pageNumber) {
-        return productRepository.findAll(Pageable.ofSize(page).withPage(pageNumber)).map(this::mapToDto);
+    public PageDto<ProductDto> getProductsPage(int pageSize, int pageNumber) {
+        Page<ProductDto> page = productRepository.findAll(Pageable.ofSize(pageSize).withPage(pageNumber)).map(this::productToDto);
+        return new PageDto<>(page);
     }
 
-    private ProductDto mapToDto(Product p) {
+    private ProductDto productToDto(Product p) {
         return new ProductDto(p.getId(), p.getTitle(), p.getPrice());
     }
 }

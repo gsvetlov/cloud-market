@@ -10,5 +10,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>product-service-commons</artifactId>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-commons</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>
