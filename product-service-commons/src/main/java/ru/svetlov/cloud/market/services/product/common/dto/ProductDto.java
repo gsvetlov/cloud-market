@@ -1,9 +1,6 @@
 package ru.svetlov.cloud.market.services.product.common.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.math.BigDecimal;
 
@@ -11,6 +8,7 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 @Getter
 @Setter
+@EqualsAndHashCode
 public class ProductDto {
     private Long id;
     private String title;

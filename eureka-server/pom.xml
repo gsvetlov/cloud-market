@@ -23,4 +23,34 @@
         </dependency>
     </dependencies>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.google.cloud.tools</groupId>
+                <artifactId>jib-maven-plugin</artifactId>
+                <version>3.1.4</version>
+                <configuration>
+                    <from>
+                        <image>docker://openjdk:11.0.12-slim</image>
+                    </from>
+                    <to>
+                        <image>eureka-server</image>
+                    </to>
+                    <container>
+<!--                        <mainClass>EurekaServerApp.class</mainClass>-->
+                        <ports>8761</ports>
+                    </container>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>dockerBuild</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
 </project>
