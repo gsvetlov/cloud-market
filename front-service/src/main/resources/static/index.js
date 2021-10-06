@@ -1,4 +1,4 @@
-const marketService = 'http://localhost:8100/ui';
+const marketGateway = 'http://localhost:8181/product-service';
 // (function () {
 //     angular.module('cloud-market-app', ['ngRoute'])
 //         .config(function config($routeProvider, $locationProvider) {
@@ -27,7 +27,7 @@ angular.module('cloud-market-app', ['ui.bootstrap']).controller('indexController
 
     let updateCatalog = function (pageIndex = 1, pageSize = 5) {
         $http({
-            url: marketService + '/products',
+            url: marketGateway + '/products/page',
             method: 'GET',
             params: {
                 p: Math.floor(pageIndex - 1),

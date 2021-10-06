@@ -1,11 +1,10 @@
 package ru.svetlov.cloud.market.product.services.impl;
 
 import org.junit.jupiter.api.*;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import ru.svetlov.cloud.market.product.entities.Product;
 import ru.svetlov.cloud.market.product.exceptions.ResourceNotFoundException;
 import ru.svetlov.cloud.market.product.repositories.ProductRepository;
@@ -20,10 +19,10 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 
-@ExtendWith(MockitoExtension.class)
+@SpringBootTest(classes = ProductService.class)
 class ProductServiceImplTest {
 
-    @Mock
+    @MockBean
     private ProductRepository repo;
 
     private ProductService service;
